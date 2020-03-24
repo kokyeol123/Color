@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="global.sesoc.color.vo.Cart" alias="Cart"/>
+		<typeAlias type="global.sesoc.color.vo.Customer" alias="Customer"/>
+		<typeAlias type="global.sesoc.color.vo.Productinfo" alias="Productinfo"/>
+		<typeAlias type="global.sesoc.color.vo.Reply" alias="Reply"/>
+		<typeAlias type="global.sesoc.color.vo.Review" alias="Review"/>
+		<typeAlias type="global.sesoc.color.vo.SelectProduct" alias="SelectProduct"/>
+		<typeAlias type="global.sesoc.color.vo.Skinphoto" alias="Skinphoto"/>
+		<typeAlias type="global.sesoc.color.vo.Skintype" alias="Skintype"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/customerMapper.xml" />
+	</mappers>
+</configuration>
