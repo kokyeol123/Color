@@ -3,4 +3,33 @@
 
 <mapper namespace="global.sesoc.color.dao.CustomerMapper">
 
+<!-- 회원가입 -->
+
+<insert id="signup" parameterType="Customer">
+	insert into 
+		customer
+        (
+            custno
+            , custid
+            , custpwd
+            , custname
+            , custgender
+            , custemail
+            , custage
+            , custphone
+            , custaddress
+        )
+	values (
+		SEQ_CUSTOMER_CUSTNO.nextval
+		, #{custid}
+		, #{custpwd}
+		, #{custname}
+		, #{custgender}
+		, #{custemail}
+		, #{custage}
+		, #{custphone}
+		, #{custaddress}
+	)
+</insert>
+
 </mapper>
