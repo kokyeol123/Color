@@ -24,4 +24,16 @@ public class CustomerDao {
 		
 		return c;
 	}
+
+	public void modifyCustomer(Customer customer) {
+		CustomerMapper mapper = session.getMapper(CustomerMapper.class);
+		mapper.modifyCustomer(customer);
+		
+	}
+
+	public void deleteCustomer(String custid) {
+		CustomerMapper mapper = session.getMapper(CustomerMapper.class);
+		mapper.deleteCustomer(custid);
+		
+	}
 }

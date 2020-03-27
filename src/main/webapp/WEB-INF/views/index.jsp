@@ -16,6 +16,6 @@
 <a href="login">로그인</a>
 <a href="logout">로그아웃</a>
 <a href="modify">회원정보수정</a>
-<a href="delete">회원탈퇴</a>
+<a href="delete?custid=${sessionScope.loginId}">회원탈퇴</a>
 </body>
 </html>

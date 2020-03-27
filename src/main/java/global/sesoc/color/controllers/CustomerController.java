@@ -110,26 +110,26 @@ public class CustomerController {
 		return "customer/customerUpdate";
 	}
 	
-//	@RequestMapping(value="/modify", method = RequestMethod.POST)
-//	public String modify(Customer customer, String custpwd2, HttpSession session, Model model,
-//			RedirectAttributes rttr) {
-//		int result;
-//		if (dao.selectOne(customer) == null) {
-//			result = 0;
-//			rttr.addAttribute("result", result);
-//			return "redirect:/modify";
-//		} else {
-//			customer.setCustpwd(custpwd2);
-//			dao.modifyCustomer(customer);
-//			session.setAttribute("custname", customer.getCustname());
-//			return "redirect:/";
-//		}
-//	}
-//	
-//	@RequestMapping(value="/delete", method = RequestMethod.GET)
-//	public String delete(HttpSession session, String custid) {
-//		dao.deleteCustomer(custid);
-//		session.invalidate();
-//		return "redirect:/";
-//	}
+	@RequestMapping(value="/modify", method = RequestMethod.POST)
+	public String modify(Customer customer, String custpwd2, HttpSession session, Model model,
+			RedirectAttributes rttr) {
+		int result;
+		if (dao.selectOne(customer) == null) {
+			result = 0;
+			rttr.addAttribute("result", result);
+			return "redirect:/modify";
+		} else {
+			customer.setCustpwd(custpwd2);
+			dao.modifyCustomer(customer);
+			session.setAttribute("custname", customer.getCustname());
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping(value="/delete", method = RequestMethod.GET)
+	public String delete(HttpSession session, String custid) {
+		dao.deleteCustomer(custid);
+		session.invalidate();
+		return "redirect:/";
+	}
 }

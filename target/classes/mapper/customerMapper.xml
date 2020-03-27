@@ -47,4 +47,27 @@
 	</if>
 </select>
 
+<!-- 회원 정보 수정 -->
+<update id="modifyCustomer" parameterType="Customer">
+	update
+		customer
+	set
+		custpwd = #{custpwd}
+		, custname = #{custname}
+		, custgender = #{custgender}
+		, custemail = #{custemail}
+		, custage = #{custage}
+		, custphone = #{custphone}
+		, custaddress = #{custaddress}
+	where
+		custid = #{custid}
+</update>
+
+<!-- 회원 탈퇴 -->
+<delete id="deleteCustomer" parameterType="String">
+	delete from
+		customer
+	where
+		custid = #{custid}
+</delete>
 </mapper>
