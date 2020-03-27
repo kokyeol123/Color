@@ -17,4 +17,11 @@ public class CustomerDao {
 		
 		return result;
 	}
+
+	public Customer selectOne(Customer customer) {
+		CustomerMapper mapper = session.getMapper(CustomerMapper.class);
+		Customer c = mapper.selectOne(customer);
+		
+		return c;
+	}
 }

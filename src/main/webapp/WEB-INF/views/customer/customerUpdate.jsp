@@ -6,70 +6,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-#wrapper {
-	width : 510px;
-	margin : 0 auto;
-}
-#wrapper h2 {
-	text-align : center;
-}
-.header {
-	width : 150px;
-}
-.inputdata {
-	width : 350px;
-}
-input[type="text"],
-input[type="password"] {
-	width : 246px;
-}
-img {
-	width : 20px;
-}
-</style>
 <script>
-function formCheck() {
-	var pwd = document.getElementById("custpwd1").value;
-	if (pwd.trim().length < 3 || pwd.trim().length > 5) {
-		alert("비밀번호를 3~5자 이내로 입력하세요");
-		return false;
-	}
+// function formCheck() {
+// 	var pwd = document.getElementById("custpwd1").value;
+// 	if (pwd.trim().length < 3 || pwd.trim().length > 5) {
+// 		alert("비밀번호를 3~5자 이내로 입력하세요");
+// 		return false;
+// 	}
 
-	var name = document.getElementById("custname").value;
-	if (name.trim().length < 1) {
-		alert("이름을 입력하세요");
-		return false;
-	}
+// 	var name = document.getElementById("custname").value;
+// 	if (name.trim().length < 1) {
+// 		alert("이름을 입력하세요");
+// 		return false;
+// 	}
 
-	var email = document.getElementById("email").value;
-	if (email.trim().length < 1) {
-		alert("이메일을 입력하세요");
-		return false;
-	}
+// 	var email = document.getElementById("email").value;
+// 	if (email.trim().length < 1) {
+// 		alert("이메일을 입력하세요");
+// 		return false;
+// 	}
 
-	if (email.indexOf("@") == -1) {
-		alert("이메일을 양식에 맞게 입력하세요");
-		return false;
-	}
+// 	if (email.indexOf("@") == -1) {
+// 		alert("이메일을 양식에 맞게 입력하세요");
+// 		return false;
+// 	}
 	
 
-	var idno = document.getElementById("idno").value;
-	if (idno.trim().length < 1) {
-		alert("식별번호를 입력하세요");
-		return;
-	}
+// 	var idno = document.getElementById("idno").value;
+// 	if (idno.trim().length < 1) {
+// 		alert("식별번호를 입력하세요");
+// 		return;
+// 	}
 
-	var address = document.getElementById("address").value;
-	if (address.trim().length < 1) {
-		alert("주소을 입력하세요");
-		return;
-	}
-}
+// 	var address = document.getElementById("address").value;
+// 	if (address.trim().length < 1) {
+// 		alert("주소을 입력하세요");
+// 		return;
+// 	}
+// }
 
-function idCheck() {
-	window.open("idCheck","win","width=500, height=600, left=50, up=50");
-}
 </script>
 <c:if test="${result == 0}">
 <script>
@@ -80,14 +55,10 @@ alert("비밀번호를 잘 못 입력하셨습니다.")
 <body>
 <div id="wrapper">
 	<h2>[ 회원 정보 수정 ]</h2>
-	<c:url var="home" value="/resources/images/home.png" />
 	<c:url var="root" value="/" />
-	참고 : ${pageContext.request.contextPath}
-	<!-- pageContext 객체 안에는 현재 개발중인 정보가 들어있다 /board라고 나온다 지금현재 개발중인 환경의 context root 를 보여준다-->
-	<!-- 아래 href=root 자리에 pageContext.request.contextPath 이걸써도 된다  -->
 	<br />
-	<a href="${root}"><img src="${home}" /></a>
-	<form id=modify action="modify" method="POST" onsubmit="return formCheck()">
+	<a href="${root}">메인으로</a>
+	<form id=modify action="modify" method="POST" >
 	<input type="hidden" value="${sessionScope.loginId}" name="custid" />
 		<table border="1">
 			<tr>
@@ -108,22 +79,34 @@ alert("비밀번호를 잘 못 입력하셨습니다.")
 			</tr>
 			<tr>
 				<th>EMail</th>
-				<td><input type="text" id="email" name="email" placeholder="Email을 입력하세요"></td>
+				<td><input type="text" id="custemail" name="custemail" placeholder="Email을 입력하세요"></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					<input type="radio" name="custgender" value="male" checked="checked" />남자 &nbsp;
+					<input type="radio" name="custgender" value="female" />여자 &nbsp;
+				</td>
 			</tr>
 			<tr>
 				<th>회원 구분</th>
 				<td>
-					<input type="radio" name="division" value="personal" checked="checked" />개인 &nbsp;
-					<input type="radio" name="division" value="company" />법인 &nbsp;
+					<input type="radio" name="custage" value="0s" checked="checked" />10세 이하 &nbsp;
+					<input type="radio" name="custage" value="10s" />11~20세 &nbsp;
+					<input type="radio" name="custage" value="20s" />21~30세 &nbsp;
+					<input type="radio" name="custage" value="30s" />31~40세 &nbsp;
+					<input type="radio" name="custage" value="40s" />41~50세 &nbsp;
+					<input type="radio" name="custage" value="50s" />51~60세 &nbsp;
+					<input type="radio" name="custage" value="60s" />60세 이상 &nbsp;
 				</td>
 			</tr>
 			<tr>
-				<th>식별 번호</th>
-				<td><input type="text" id="idno" name="idno" placeholder="개인 : 주민등록번호 / 법인 : 사업자등록번호" /></td>
+				<th>전화 번호</th>
+				<td><input type="text" id="custphone" name="custphone" placeholder="010-0000-0000 형식으로 입력해주세요." /></td>
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td><input type="text" id="address" name="address" placeholder="주소를 입력하세요" /></td>
+				<td><input type="text" id="custaddress" name="custaddress" placeholder="주소를 입력하세요" /></td>
 			</tr>
 			<tr>
 				<th colspan="2">

@@ -32,4 +32,19 @@
 	)
 </insert>
 
+<!-- 로그인 / 중복체크는 나중에 -->
+
+<select id="selectOne" parameterType="Customer" resultType="Customer">
+	select
+		*
+	from
+		customer
+	where
+		custid = #{custid}
+	<if test="custpwd != null">
+	and
+		custpwd = #{custpwd}
+	</if>
+</select>
+
 </mapper>

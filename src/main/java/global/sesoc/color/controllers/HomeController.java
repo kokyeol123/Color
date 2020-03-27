@@ -18,21 +18,4 @@ public class HomeController {
 		
 		return "index";
 	}
-	
-	@RequestMapping(value = "/naver", method = RequestMethod.GET)
-	public String naver() {
-		
-		return "naver";
-	}
-	
-	@PostMapping("/sendData")
-	public void sendData(String name) {
-		System.out.println("신호 도착 => " + name);
-	}
-	
-	@ResponseBody
-	@GetMapping("/myReceive")
-	public String myReceive() {
-		return "OK!!!";
-	}
 }
