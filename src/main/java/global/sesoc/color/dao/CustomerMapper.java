@@ -11,4 +11,6 @@ public interface CustomerMapper {
 	public void modifyCustomer(Customer customer);
 
 	public void deleteCustomer(String custid);
+
+	public void keyalter(String custid);
 }

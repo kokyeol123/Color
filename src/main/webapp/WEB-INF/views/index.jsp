@@ -11,11 +11,15 @@
 	<c:if test="${sessionScope.loginId != null}">
 	<p><button type="button" class="btn btn-danger">${sessionScope.custname}님, 안녕하세요.</button></p>
 	</c:if>
-<a href="${pageContext.request.contextPath}/naver">네이버</a>
+<a href="naver">네이버</a>
+<c:if test="${sessionScope.loginId == null}">
 <a href="join">회원가입</a>
 <a href="login">로그인</a>
+</c:if>
+<c:if test="${sessionScope.loginId != null}">
 <a href="logout">로그아웃</a>
 <a href="modify">회원정보수정</a>
 <a href="delete?custid=${sessionScope.loginId}">회원탈퇴</a>
+</c:if>
 </body>
 </html>

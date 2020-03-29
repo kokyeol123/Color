@@ -71,9 +71,11 @@ CREATE TABLE customer
 	-- 핸드폰번호 000-0000-0000 형식으로 사용한다
 	custphone varchar2(30) NOT NULL,
 	-- 주소
-	custaddress varchar2(100),
+	custaddress varchar2(300),
 	-- 가입일 sysdate 사용
 	custregdate date DEFAULT sysdate,
+	-- 이메일인증을위한키 인증되면 Y으로 바꿔준다
+	custkey varchar2(10),
 	PRIMARY KEY (custno)
 );
 
@@ -151,9 +153,9 @@ CREATE TABLE skinphoto
 	-- 사진번호 시퀀스 사용
 	photono number NOT NULL,
 	originalphoto varchar2(100) NOT NULL,
-	savedphoto varchar2(100) NOT NULL,
+	savedphoto varchar2(100),
 	-- 첨부된 파일에서 구글 비젼을 이용해 추출한 피부색(rgb값)
-	skincolor varchar2(15) NOT NULL,
+	skincolor varchar2(17) NOT NULL,
 	-- 사진이 저장된 날짜
 	savedate date DEFAULT sysdate,
 	-- 회원번호 시퀀스 사용
@@ -249,6 +251,7 @@ COMMENT ON COLUMN customer.custage IS '10~20, 20~30 등 연령대로 구분';
 COMMENT ON COLUMN customer.custphone IS '핸드폰번호 000-0000-0000 형식으로 사용한다';
 COMMENT ON COLUMN customer.custaddress IS '주소';
 COMMENT ON COLUMN customer.custregdate IS '가입일 sysdate 사용';
+COMMENT ON COLUMN customer.custkey IS '이메일인증을위한키 인증되면 Y으로 바꿔준다';
 COMMENT ON COLUMN productinfo.productno IS '시퀀스 사용';
 COMMENT ON COLUMN productinfo.productname IS '상품 이름';
 COMMENT ON COLUMN productinfo.productimg IS '상품사진 url';

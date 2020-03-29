@@ -36,4 +36,10 @@ public class CustomerDao {
 		mapper.deleteCustomer(custid);
 		
 	}
+	
+	public void keyalter(String custid) {
+		CustomerMapper mapper = session.getMapper(CustomerMapper.class);
+		mapper.keyalter(custid);
+		
+	}
 }

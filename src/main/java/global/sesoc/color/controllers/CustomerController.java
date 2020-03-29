@@ -1,6 +1,7 @@
 package global.sesoc.color.controllers;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import global.sesoc.color.dao.CustomerDao;
+import global.sesoc.color.util.UserMailSendService;
 import global.sesoc.color.vo.Customer;
 
 @Controller
@@ -21,6 +23,10 @@ public class CustomerController {
 	
 	@Autowired
 	CustomerDao dao;
+	
+    @Autowired
+	private UserMailSendService mailsender;
+
 	
 	// 회원가입화면요청
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -30,8 +36,19 @@ public class CustomerController {
 	
 	// 회원가입 처리 요청
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String join(Customer customer) {
+	public String join(Customer customer, HttpServletRequest request) {
 		dao.signup(customer);
+		
+		mailsender.mailSendWithUserKey(customer.getCustemail(), customer.getCustid(), request);
+		
+		return "redirect:/";
+	}
+	
+	// 이메일 인증을 위한 키변경
+	@RequestMapping(value = "/keyalter", method = RequestMethod.GET)
+	public String keyalter(String custid) {
+		dao.keyalter(custid);
+		System.out.println("키변경여기까지옴");
 		return "redirect:/";
 	}
 	

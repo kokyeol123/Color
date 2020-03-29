@@ -70,4 +70,15 @@
 	where
 		custid = #{custid}
 </delete>
+
+<!-- 이메일 인증 -->
+<update id="keyalter" parameterType="String">
+
+	update
+		customer
+	set
+		custkey = 'Y'
+	where
+		custid = #{custid}
+</update>
 </mapper>
