@@ -15,4 +15,7 @@ public class Customer {
 	private String custphone;
 	private String custaddress;
 	private String custregdate;
+	private String custkey;
+	private String skintype;
+	private String profilephoto;
 }

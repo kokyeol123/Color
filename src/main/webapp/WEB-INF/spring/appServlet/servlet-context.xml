@@ -25,8 +25,8 @@
 	<beans:bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com" />
 		<beans:property name="port" value="587" /><!-- 465 or 25 -->
-		<beans:property name="username" value="본인구글이메일" />
-		<beans:property name="password" value="구글비밀번호" />
+		<beans:property name="username" value="kokyeol123@gmail.com" />
+		<beans:property name="password" value="zpdrjfn1" />
 		<beans:property name="defaultEncoding" value="utf-8" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
@@ -40,6 +40,6 @@
 	
 	<context:component-scan base-package="global.sesoc.color" />
 	
-	
+	<resources location="file:/uploadPath/" mapping="/uploadPath/*"/>
 	
 </beans:beans>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import global.sesoc.color.dao.CustomerDao;
@@ -24,7 +25,7 @@ public class CustomerController {
 	@Autowired
 	CustomerDao dao;
 	
-    @Autowired
+	@Autowired
 	private UserMailSendService mailsender;
 
 	
@@ -58,7 +59,7 @@ public class CustomerController {
 		
 		return "customer/loginForm";
 	}
-//	
+
 	// 로그인 처리를 요청
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Customer customer, boolean rememberMe, HttpServletResponse response, HttpSession session, Model model) {
@@ -78,6 +79,7 @@ public class CustomerController {
 		if (c != null) {
 			session.setAttribute("loginId", c.getCustid());
 			session.setAttribute("custname", c.getCustname());
+			session.setAttribute("custno", c.getCustno());
 			return "redirect:/";
 		} else {
 			model.addAttribute("error", "입력한 정보가 틀렸습니다.");
@@ -85,39 +87,28 @@ public class CustomerController {
 		}
 	}
 	
+	// 로그아웃
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		
 		return "redirect:/";
 	}
-//	
-//	@ResponseBody
-//	@RequestMapping(value="/idCheck", method = RequestMethod.GET)
-//	public String idCheck(Customer customer) {
-//		Customer c = dao.selectOne(customer);
-//		
-//		if (c == null) {
-//			return "success";
-//		}
-//		
-//		return "fail";
-//	}
-//	
-////	@RequestMapping(value="/idCheck", method = RequestMethod.POST)
-////	public String idCheck(Customer customer, Model model) {
-////		Customer c = dao.selectOne(customer);
-////		// c가 null이 아니라면 그 아이디는 사용불가!
-////		
-////		if(c != null)
-////			model.addAttribute("id", c.getCustid());
-////		else
-////			model.addAttribute("id", null);
-////			model.addAttribute("custid", customer.getCustid());
-////		
-////		return "customer/idCheck";
-////	}
-//	
+	
+	// 아이디 중복확인
+	@ResponseBody
+	@RequestMapping(value="/idCheck", method = RequestMethod.GET)
+	public String idCheck(Customer customer) {
+		Customer c = dao.selectOne(customer);
+		
+		if (c == null) {
+			return "success";
+		}
+		
+		return "fail";
+	}
+	
+	// 회원정보 수정 페이지 이동
 	@RequestMapping(value="/modify", method = RequestMethod.GET)
 	public String modify(Model model, @RequestParam(value = "result", defaultValue = "-1") int result) {
 		if (result == 0) {
@@ -127,6 +118,7 @@ public class CustomerController {
 		return "customer/customerUpdate";
 	}
 	
+	// 회원정보 수정 처리
 	@RequestMapping(value="/modify", method = RequestMethod.POST)
 	public String modify(Customer customer, String custpwd2, HttpSession session, Model model,
 			RedirectAttributes rttr) {
@@ -143,6 +135,7 @@ public class CustomerController {
 		}
 	}
 	
+	// 회원탈퇴
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
 	public String delete(HttpSession session, String custid) {
 		dao.deleteCustomer(custid);

@@ -9,11 +9,16 @@
 		<typeAlias type="global.sesoc.color.vo.Productinfo" alias="Productinfo"/>
 		<typeAlias type="global.sesoc.color.vo.Reply" alias="Reply"/>
 		<typeAlias type="global.sesoc.color.vo.Review" alias="Review"/>
-		<typeAlias type="global.sesoc.color.vo.SelectProduct" alias="SelectProduct"/>
 		<typeAlias type="global.sesoc.color.vo.Skinphoto" alias="Skinphoto"/>
-		<typeAlias type="global.sesoc.color.vo.Skintype" alias="Skintype"/>
+		<typeAlias type="global.sesoc.color.vo.CrawlReview" alias="CrawlReview"/>
+		<typeAlias type="global.sesoc.color.vo.Checkbox" alias="Checkbox"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/customerMapper.xml" />
+		<mapper resource="mapper/reviewMapper.xml" />
+		<mapper resource="mapper/crawlreviewMapper.xml" />
+		<mapper resource="mapper/productMapper.xml" />
+		<mapper resource="mapper/replyMapper.xml" />
+		<mapper resource="mapper/cartMapper.xml" />
 	</mappers>
 </configuration>

@@ -9,9 +9,8 @@
 </head>
 <body>
 	<c:if test="${sessionScope.loginId != null}">
-	<p><button type="button" class="btn btn-danger">${sessionScope.custname}님, 안녕하세요.</button></p>
+	<p>${sessionScope.custname}님, 안녕하세요.</p>
 	</c:if>
-<a href="naver">네이버</a>
 <c:if test="${sessionScope.loginId == null}">
 <a href="join">회원가입</a>
 <a href="login">로그인</a>
@@ -21,5 +20,9 @@
 <a href="modify">회원정보수정</a>
 <a href="delete?custid=${sessionScope.loginId}">회원탈퇴</a>
 </c:if>
+<a href="review">리뷰</a>
+<a href="reviewWrite?custid=${sessionScope.loginId}">리뷰쓰기</a>
+<a href="template">템플릿</a>
+<a href="show">상품리스트</a>
 </body>
 </html>

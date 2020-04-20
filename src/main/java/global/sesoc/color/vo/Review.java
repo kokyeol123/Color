@@ -12,4 +12,8 @@ public class Review {
 	private String originalfile;
 	private String savedfile;
 	private int reviewgrade;
+	private String skintype;
+	private String profilephoto;
+	private String age;
+	private String gender;
 }

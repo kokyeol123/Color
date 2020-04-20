@@ -18,4 +18,16 @@ public class HomeController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/template", method = RequestMethod.GET)
+	public String template() {
+		
+		return "template";
+	}
+	
+	@RequestMapping(value = "/editor", method = RequestMethod.GET)
+	public String editor() {
+		
+		return "hobbyRegister";
+	}
 }

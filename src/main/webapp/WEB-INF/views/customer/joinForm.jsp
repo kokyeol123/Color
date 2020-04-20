@@ -66,36 +66,36 @@ function formsubmit() {
 	myForm.submit();
 }
 
-// $(function() {
-// 	$("#custid").on('keyup', function(){
-// 		var custid = $('#custid').val();
-// 		if(custid.trim().length < 3 || custid.trim().length > 5) {
-// 			$("#idCheck").css("color", "red");
-// 			$("#idCheck").text("아이디를 3~5자로 입력하세요");
-// 			return;
-// 		}
-// 		$("#idCheck").text('');
-
-// 		// 입력한 아이디가 사용가능한지 여부 체크
-// 		$.ajax({
-// 			type : "GET"
-// 			, url : "idCheck"
-// 			, data : {"custid" : custid}
-// 			, success : function(resp) {
-// 				// 사용가능한 경우 : 'success' 리턴
-// 				// 사용불가능한 경우 : 'fail' 리턴
-// 				if(resp == 'success') {
-// 					$("#idCheck").css("color", "blue");
-// 					$("#idCheck").text("사용 가능한 아이디입니다.");
-// 				}
-// 				else {
-// 					$("#idCheck").css("color", "red");
-// 					$("#idCheck").text("사용 불가능한 아이디입니다.");
-// 				}
-// 			}
-// 		})
-// 	})
-// })
+$(function() {
+	$("#custid").on('keyup', function(){
+		var custid = $('#custid').val();
+		if(custid.trim().length < 4 || custid.trim().length > 10) {
+			$("#idCheck").css("color", "red");
+			$("#idCheck").text("아이디를 4~10자로 입력하세요");
+			return;
+		}
+		$("#idCheck").text('');
+		
+		// 입력한 아이디가 사용가능한지 여부 체크
+		$.ajax({
+			type : "GET"
+			, url : "idCheck"
+			, data : {"custid" : custid}
+			, success : function(resp) {
+				// 사용가능한 경우 : 'success' 리턴
+				// 사용불가능한 경우 : 'fail' 리턴
+				if(resp == 'success') {
+					$("#idCheck").css("color", "blue");
+					$("#idCheck").text("사용 가능한 아이디입니다.");
+				}
+				else {
+					$("#idCheck").css("color", "red");
+					$("#idCheck").text("사용 불가능한 아이디입니다.");
+				}
+			}
+		})
+	})
+})
 </script>
 <script>
 // function formCheck() {
@@ -188,7 +188,17 @@ function formsubmit() {
 				</td>
 			</tr>
 			<tr>
-				<th>회원 구분</th>
+				<th>피부 타입</th>
+				<td>
+					<input type="radio" name="skintype" value="dry" checked="checked" />건성 &nbsp;
+					<input type="radio" name="skintype" value="oily" />지성 &nbsp;
+					<input type="radio" name="skintype" value="normal" />중성 &nbsp;
+					<input type="radio" name="skintype" value="combination" />복합성 &nbsp;
+					<input type="radio" name="skintype" value="sensitive" />민감성 &nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>연령대</th>
 				<td>
 					<input type="radio" name="custage" value="0s" checked="checked" />10세 이하 &nbsp;
 					<input type="radio" name="custage" value="10s" />11~20세 &nbsp;

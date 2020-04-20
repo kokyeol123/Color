@@ -18,6 +18,7 @@
             , custage
             , custphone
             , custaddress
+            , skintype
         )
 	values (
 		SEQ_CUSTOMER_CUSTNO.nextval
@@ -29,6 +30,7 @@
 		, #{custage}
 		, #{custphone}
 		, #{custaddress}
+		, #{skintype}
 	)
 </insert>
 
